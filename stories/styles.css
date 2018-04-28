@@ -5,10 +5,11 @@
 .rdw-storybook-wrapper {
 }
 .rdw-storybook-editor {
-  border: 1px solid #F1F1F1;
-  padding: 5px;
-  border-radius: 2px;
-  height: 200px;
+  border: solid 1px rgb(229, 229, 229);
+  padding: 12px;
+  border-radius: 4px;
+  height: 160px;
+  background-color: rgb(255, 255, 255);
 }
 .rdw-storybook-toolbar {
   top: -130px;

@@ -1,6 +1,6 @@
-import bold from '../../images/bold.svg';
-import italic from '../../images/italic.svg';
-import underline from '../../images/underline.svg';
+import bold from '../../images/typ-bold.svg';
+import italic from '../../images/typ-italic.svg';
+import underline from '../../images/typ-underline.svg';
 import strikethrough from '../../images/strikethrough.svg';
 import monospace from '../../images/monospace.svg';
 import fontSize from '../../images/font-size.svg';
@@ -8,14 +8,14 @@ import indent from '../../images/indent.svg';
 import outdent from '../../images/outdent.svg';
 import ordered from '../../images/list-ordered.svg';
 import unordered from '../../images/list-unordered.svg';
-import left from '../../images/align-left.svg';
-import center from '../../images/align-center.svg';
-import right from '../../images/align-right.svg';
-import justify from '../../images/align-justify.svg';
+import left from '../../images/typ-align-left-orange.svg';
+import center from '../../images/typ-align-centre.svg';
+import right from '../../images/typ-align-right.svg';
+import justify from '../../images/typ-justified.svg';
 import color from '../../images/color.svg';
 import eraser from '../../images/eraser.svg';
-import link from '../../images/link.svg';
-import unlink from '../../images/unlink.svg';
+import link from '../../images/ui-link-plus.svg';
+import unlink from '../../images/ui-link-minus.svg';
 import emoji from '../../images/emoji.svg';
 import embedded from '../../images/embedded.svg';
 import image from '../../images/image.svg';
@@ -29,13 +29,13 @@ import superscript from '../../images/superscript.svg';
 * whatever user passes in toolbar property is deeply merged with this to over-ride defaults.
 */
 export default {
-  options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
+  options: ['fontSize', 'inline', 'textAlign', 'link'],
   inline: {
     inDropdown: false,
     className: undefined,
     component: undefined,
     dropdownClassName: undefined,
-    options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace', 'superscript', 'subscript'],
+    options: ['bold', 'italic', 'underline'],
     bold: { icon: bold, className: undefined, title: undefined },
     italic: { icon: italic, className: undefined, title: undefined },
     underline: { icon: underline, className: undefined, title: undefined },
@@ -53,8 +53,9 @@ export default {
     title: undefined,
   },
   fontSize: {
+    inDropdown: false,
     icon: fontSize,
-    options: [8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
+    options: [10, 12],
     className: undefined,
     component: undefined,
     dropdownClassName: undefined,

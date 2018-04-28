@@ -484,6 +484,7 @@ export default class WysiwygEditor extends Component {
     const toolbarShow =
       editorFocused || this.focusHandler.isInputFocused() || !toolbarOnFocus;
     return (
+
       <div
         id={this.wrapperId}
         className={classNames(wrapperClassName, "rdw-editor-wrapper")}
@@ -492,6 +493,7 @@ export default class WysiwygEditor extends Component {
         onBlur={this.onWrapperBlur}
         aria-label="rdw-wrapper"
       >
+      <div className='textStyleDiv'>Text Style</div>
         {!toolbarHidden && (
           <div
             className={classNames("rdw-editor-toolbar", toolbarClassName)}
@@ -511,6 +513,7 @@ export default class WysiwygEditor extends Component {
                 config.uploadCallback = uploadCallback;
               }
               return <Control key={index} {...controlProps} config={config} />;
+            // return "abc";
             })}
             {toolbarCustomButtons &&
               toolbarCustomButtons.map((button, index) =>
@@ -518,6 +521,7 @@ export default class WysiwygEditor extends Component {
               )}
           </div>
         )}
+        <div className='textDiv'>Text</div>
         <div
           ref={this.setWrapperReference}
           className={classNames(editorClassName, "rdw-editor-main")}
@@ -528,6 +532,7 @@ export default class WysiwygEditor extends Component {
           onKeyDown={KeyDownHandler.onKeyDown}
           onMouseDown={this.onEditorMouseDown}
         >
+        <div className='rdw-editor-main-content'>
           <Editor
             ref={this.setEditorReference}
             onTab={this.onTab}
@@ -542,9 +547,13 @@ export default class WysiwygEditor extends Component {
             blockRendererFn={this.blockRendererFn}
             handleKeyCommand={this.handleKeyCommand}
             ariaLabel={ariaLabel || "rdw-editor"}
-            blockRenderMap={blockRenderMap}
+            block RenderMap={blockRenderMap}
             {...this.editorProps}
+            toolbar={{
+              options: ['fontSize', 'inline', 'textAlign', 'link']
+            }}
           />
+        </div>
         </div>
       </div>
     );

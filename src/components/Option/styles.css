@@ -1,15 +1,15 @@
 .rdw-option-wrapper {
-  border: 1px solid #F1F1F1;
-  padding: 5px;
+  /* border: 1px solid #F1F1F1; */
+  padding: 8px;
   min-width: 25px;
   height: 20px;
-  border-radius: 2px;
+  border-radius: 4px;
   margin: 0 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background: white;
+  background: #f7f7f7;
   text-transform: capitalize;
 }
 .rdw-option-wrapper:hover {
@@ -20,6 +20,7 @@
 }
 .rdw-option-active {
   box-shadow: 1px 1px 0px #BFBDBD inset;
+  background: #e5e5e5;
 }
 .rdw-option-disabled {
   opacity: 0.3;
