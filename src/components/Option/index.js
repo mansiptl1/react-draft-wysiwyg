@@ -19,10 +19,19 @@ export default class Option extends Component {
 
   onClick: Function = () => {
     const { disabled, onClick, value } = this.props;
+    console.log(value);
     if (!disabled) {
       onClick(value);
     }
   };
+
+  // onToggle: Function = () => {
+  //   const { disabled, value} = this.props;
+  //   switch(value) {
+  //     case: 'bold'
+       
+  //   }
+  // }
 
   render() {
     const { children, className, activeClassName, active, disabled, title } = this.props;
@@ -40,8 +49,8 @@ export default class Option extends Component {
         aria-selected={active}
         title={title}
       >
-        {children}
-      </div>
+        {children}    
+     </div>
     );
   }
 }

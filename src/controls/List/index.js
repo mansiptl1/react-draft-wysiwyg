@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { RichUtils } from 'draft-js';
-import { changeDepth, getBlockBeforeSelectedBlock, getSelectedBlock, isListBlock } from 'draftjs-utils';
+import { changeDepth, getBlockBeforeSelectedBlock,
+  getSelectedBlock, isListBlock, toggleCustomInlineStyle } from 'draftjs-utils';
 
 import LayoutComponent from './Component';
 
@@ -48,9 +49,9 @@ export default class List extends Component {
 
   onChange: Function = (value: string): void => {
     if (value === 'unordered') {
-      this.toggleBlockType('unordered-list-item');
+      this.toggleBlockType1('unordered-list-item');
     } else if (value === 'ordered') {
-      this.toggleBlockType('ordered-list-item');
+      this.toggleBlockType2('ordered-list-item');
     } else if (value === 'indent') {
       this.adjustDepth(1);
     } else {
@@ -77,15 +78,34 @@ export default class List extends Component {
     });
   };
 
-  toggleBlockType: Function = (blockType: String): void => {
-    const { onChange, editorState } = this.props;
-    const newState = RichUtils.toggleBlockType(
+  toggleBlockType1: Function = (blockType: String): void => {
+    const { editorState, onChange } = this.props;
+    const fontSize = 20;
+    console.log(editorState);
+    const newState = toggleCustomInlineStyle(
       editorState,
-      blockType,
+      'fontSize',
+      fontSize,
     );
     if (newState) {
       onChange(newState);
     }
+    console.log('in main index');
+  };
+
+  toggleBlockType2: Function = (blockType: String): void => {
+    const { editorState, onChange } = this.props;
+    const fontSize = 10;
+    console.log(editorState);
+    const newState = toggleCustomInlineStyle(
+      editorState,
+      'fontSize',
+      fontSize,
+    );
+    if (newState) {
+      onChange(newState);
+    }
+    console.log('in main index');
   };
 
   adjustDepth: Function = (adjustment): void => {

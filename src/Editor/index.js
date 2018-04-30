@@ -513,7 +513,6 @@ export default class WysiwygEditor extends Component {
                 config.uploadCallback = uploadCallback;
               }
               return <Control key={index} {...controlProps} config={config} />;
-            // return "abc";
             })}
             {toolbarCustomButtons &&
               toolbarCustomButtons.map((button, index) =>
@@ -550,7 +549,10 @@ export default class WysiwygEditor extends Component {
             block RenderMap={blockRenderMap}
             {...this.editorProps}
             toolbar={{
-              options: ['fontSize', 'inline', 'textAlign', 'link']
+              options: ['fontSize','inline', 'textAlign', 'link'],
+              link: {
+                options: ['unlink', 'link'],
+              },
             }}
           />
         </div>

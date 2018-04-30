@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
+import bold from '../../../../images/typ-bold.svg';
 import { Dropdown, DropdownOption } from '../../../components/Dropdown';
 import './styles.css';
 
@@ -52,7 +52,8 @@ export default class LayoutComponent extends Component {
       (options && options.indexOf(defaultFontSize) >= 0 && defaultFontSize);
     return (
       <div className="rdw-fontsize-wrapper" aria-label="rdw-font-size-control">
-        <Dropdown
+      <img src={ bold } />
+        {/* <Dropdown
           className={classNames('rdw-fontsize-dropdown', className)}
           optionWrapperClassName={classNames(dropdownClassName)}
           onChange={onChange}
@@ -78,7 +79,8 @@ export default class LayoutComponent extends Component {
               </DropdownOption>),
             )
           }
-        </Dropdown>
+        </Dropdown> */}
+
       </div>
     );
   }

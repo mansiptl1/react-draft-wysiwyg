@@ -3,6 +3,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {
+  toggleCustomInlineStyle,
+  getSelectionCustomInlineStyle,
+} from 'draftjs-utils';
 
 import { getFirstIcon } from '../../../utils/toolbar';
 import { Dropdown, DropdownOption } from '../../../components/Dropdown';
@@ -11,34 +15,92 @@ import './styles.css';
 
 export default class LayoutComponent extends Component {
   static propTypes = {
-    expanded: PropTypes.bool,
-    doExpand: PropTypes.func,
-    doCollapse: PropTypes.func,
-    onExpandEvent: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
+    editorState: PropTypes.object,
+    modalHandler: PropTypes.object,
     config: PropTypes.object,
-    onChange: PropTypes.func,
-    currentState: PropTypes.object,
     translations: PropTypes.object,
-    indentDisabled: PropTypes.bool,
-    outdentDisabled: PropTypes.bool,
   };
+//--------------
 
+// state: Object = {
+//   expanded: undefined,
+//   currentFontSize: undefined,
+// };
+
+// componentWillMount(): void {
+//   const { editorState, modalHandler } = this.props;
+//   if (editorState) {
+//     this.setState({
+//       currentFontSize:
+//         getSelectionCustomInlineStyle(editorState,
+//           ['FONTSIZE']).FONTSIZE,
+//     });
+//   }
+//   // modalHandler.registerCallBack(this.expandCollapse);
+// }
+
+// componentWillReceiveProps(properties: Object): void {
+//   if (properties.editorState &&
+//     this.props.editorState !== properties.editorState) {
+//     this.setState({
+//       currentFontSize:
+//         getSelectionCustomInlineStyle(properties.editorState,
+//           ['FONTSIZE']).FONTSIZE,
+//     });
+//   }
+// }
+
+// componentWillUnmount(): void {
+//   const { modalHandler } = this.props;
+//   // modalHandler.deregisterCallBack(this.expandCollapse);
+// }
+
+// onExpandEvent: Function = (): void => {
+//   this.signalExpanded = !this.state.expanded;
+// };
+
+// expandCollapse: Function = (): void => {
+//   this.setState({
+//     expanded: this.signalExpanded,
+//   });
+//   this.signalExpanded = false;
+// }
+
+// doExpand: Function = (): void => {
+//   this.setState({
+//     expanded: true,
+//   });
+// };
+
+// doCollapse: Function = (): void => {
+//   this.setState({
+//     expanded: false,
+//   });
+// };
+//------------
   options: Array = ['unordered', 'ordered', 'indent', 'outdent'];
 
-  toggleBlockType: Function = (blockType: String): void => {
+  increaseFontSize: Function = (): void => {
     const { onChange } = this.props;
-    onChange(blockType);
+    onChange('ordered');
   };
 
-  indent: Function = (): void => {
+  decreaseFontSize: Function = (): void => {
     const { onChange } = this.props;
-    onChange('indent');
-  };
+    onChange('unordered');
+    console.log('in 1st');
+  };  
 
-  outdent: Function = (): void => {
-    const { onChange } = this.props;
-    onChange('outdent');
-  };
+  // indent: Function = (): void => {
+  //   const { onChange } = this.props;
+  //   onChange('indent');
+  // };
+
+  // outdent: Function = (): void => {
+  //   const { onChange } = this.props;
+  //   onChange('outdent');
+  // };
 
   // todo: evaluate refactoring this code to put a loop there and in other places also in code
   // hint: it will require moving click handlers
@@ -55,7 +117,7 @@ export default class LayoutComponent extends Component {
       <div className={classNames('rdw-list-wrapper', className)} aria-label="rdw-list-control">
         {options.indexOf('unordered') >= 0 && <Option
           value="unordered"
-          onClick={this.toggleBlockType}
+          onClick={this.decreaseFontSize}
           className={classNames(unordered.className)}
           active={listType === 'unordered'}
           title={unordered.title || translations['components.controls.list.unordered']}
@@ -67,7 +129,7 @@ export default class LayoutComponent extends Component {
         </Option>}
         {options.indexOf('ordered') >= 0 && <Option
           value="ordered"
-          onClick={this.toggleBlockType}
+          onClick={this.increaseFontSize}
           className={classNames(ordered.className)}
           active={listType === 'ordered'}
           title={ordered.title || translations['components.controls.list.ordered']}

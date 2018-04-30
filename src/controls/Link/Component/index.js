@@ -98,10 +98,16 @@ class LayoutComponent extends Component {
     const { linkTitle, linkTarget, linkTargetOption } = this.state;
     return (
       <div
-        className={classNames('rdw-link-modal', popupClassName)}
+        // className={classNames('rdw-link-modal', popupClassName)}
         onClick={stopPropagation}
       >
-        <label className="rdw-link-modal-label" htmlFor="linkTitle">
+         <input type='text' placeholder='https://'
+         onChange={this.updateValue}
+         onBlur={this.updateValue}
+         name="linkTarget"
+         value={linkTarget} 
+         onDoubleClick={this.addLink} />
+        {/* <label className="rdw-link-modal-label" htmlFor="linkTitle">
           {translations['components.controls.link.linkTitle']}
         </label>
         <input
@@ -147,7 +153,7 @@ class LayoutComponent extends Component {
           >
             {translations['generic.cancel']}
           </button>
-        </span>
+        </span> */}
       </div>
     );
   }
@@ -174,7 +180,7 @@ class LayoutComponent extends Component {
             src={link.icon}
             alt=""
           />
-        </Option>}
+        </Option> }
         {options.indexOf('unlink') >= 0 && <Option
           disabled={!currentState.link}
           value="ordered-list-item"
@@ -187,7 +193,9 @@ class LayoutComponent extends Component {
             alt=""
           />
         </Option>}
+        <div>
         {expanded && showModal ? this.renderAddLinkModal() : undefined}
+        </div>
       </div>
     );
   }

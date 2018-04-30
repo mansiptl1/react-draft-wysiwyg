@@ -6,8 +6,8 @@ import monospace from '../../images/monospace.svg';
 import fontSize from '../../images/font-size.svg';
 import indent from '../../images/indent.svg';
 import outdent from '../../images/outdent.svg';
-import ordered from '../../images/list-ordered.svg';
-import unordered from '../../images/list-unordered.svg';
+import sizedecrease from '../../images/typ-size-decrease.svg';
+import sizeincrease from '../../images/typ-size-increase.svg';
 import left from '../../images/typ-align-left-orange.svg';
 import center from '../../images/typ-align-centre.svg';
 import right from '../../images/typ-align-right.svg';
@@ -29,7 +29,7 @@ import superscript from '../../images/superscript.svg';
 * whatever user passes in toolbar property is deeply merged with this to over-ride defaults.
 */
 export default {
-  options: ['fontSize', 'inline', 'textAlign', 'link'],
+  options: ['list', 'inline', 'textAlign', 'link'],
   inline: {
     inDropdown: false,
     className: undefined,
@@ -55,7 +55,7 @@ export default {
   fontSize: {
     inDropdown: false,
     icon: fontSize,
-    options: [10, 12],
+    options: [10],
     className: undefined,
     component: undefined,
     dropdownClassName: undefined,
@@ -73,9 +73,9 @@ export default {
     className: undefined,
     component: undefined,
     dropdownClassName: undefined,
-    options: ['unordered', 'ordered', 'indent', 'outdent'],
-    unordered: { icon: unordered, className: undefined, title: undefined },
-    ordered: { icon: ordered, className: undefined, title: undefined },
+    options: ['unordered', 'ordered'],
+    unordered: { icon: sizeincrease, className: undefined, title: undefined },
+    ordered: { icon: sizedecrease, className: undefined, title: undefined },
     indent: { icon: indent, className: undefined, title: undefined },
     outdent: { icon: outdent, className: undefined, title: undefined },
     title: undefined,
@@ -113,9 +113,9 @@ export default {
     dropdownClassName: undefined,
     showOpenOptionOnHover: true,
     defaultTargetOption: '_self',
-    options: ['link', 'unlink'],
-    link: { icon: link, className: undefined, title: undefined },
-    unlink: { icon: unlink, className: undefined, title: undefined },
+    options: ['unlink', 'link'],
+    link: { icon: unlink, className: undefined, title: undefined },
+    unlink: { icon: link, className: undefined, title: undefined },
   },
   emoji: {
     icon: emoji,

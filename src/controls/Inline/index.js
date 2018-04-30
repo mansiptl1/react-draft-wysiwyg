@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 import { getSelectionInlineStyle } from 'draftjs-utils';
 import { RichUtils, EditorState, Modifier } from 'draft-js';
 import { forEach } from '../../utils/common';
-
+import boldOrange from './Component/typ-bold-orange.svg';
 import LayoutComponent from './Component';
+import bold from '../../../images/typ-bold.svg';
+
 
 export default class Inline extends Component {
   static propTypes = {
@@ -57,13 +59,23 @@ export default class Inline extends Component {
   }
 
   toggleInlineStyle: Function = (style: string): void => {
+    // console.log('under render method:', this.state.currentStyles.bold);
+    if (this.state.currentStyles.bold)
+    {
+      this.props.config[style].icon = boldOrange;
+    }
+    else {
+    this.props.config[style].icon = bold;
+    }
     const newStyle = style === 'monospace' ? 'CODE' : style.toUpperCase();
     const { editorState, onChange } = this.props;
     let newState = RichUtils.toggleInlineStyle(
       editorState,
       newStyle,
     );
+   
     if (style === 'subscript' || style === 'superscript') {
+      //const { config } = this.props;
       const removeStyle = style === 'subscript' ? 'SUPERSCRIPT' : 'SUBSCRIPT';
       const contentState = Modifier.removeInlineStyle(
         newState.getCurrentContent(),
@@ -75,6 +87,7 @@ export default class Inline extends Component {
     if (newState) {
       onChange(newState);
     }
+    console.log('{config[style].icon}', this.props.config[style].icon);
   };
 
   changeKeys = (style) => {
@@ -104,6 +117,7 @@ export default class Inline extends Component {
     const { config, translations } = this.props;
     const { expanded, currentStyles } = this.state;
     const InlineComponent = config.component || LayoutComponent;
+    console.log('under render method:', currentStyles.bold);
     return (
       <InlineComponent
         config={config}
