@@ -1,7 +1,6 @@
 .rdw-link-wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
   position: relative;
 }
 .rdw-link-dropdown {

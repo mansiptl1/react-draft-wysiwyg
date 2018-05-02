@@ -1484,7 +1484,6 @@ ol {
 .rdw-block-wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
 }
 .rdw-block-dropdown {
   width: 110px;
@@ -1521,7 +1520,6 @@ ol {
 .rdw-list-wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
 }
 .rdw-list-dropdown {
   width: 50px;
@@ -1535,7 +1533,6 @@ ol {
 .rdw-text-align-wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
 }
 .rdw-text-align-dropdown {
   width: 50px;
@@ -1640,7 +1637,6 @@ ol {
 .rdw-link-wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
   position: relative;
 }
 .rdw-link-dropdown {
