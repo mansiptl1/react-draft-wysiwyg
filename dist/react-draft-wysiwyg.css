@@ -862,12 +862,12 @@
   outline: none;
 }
 .rdw-editor-wrapper {
-  padding: 24px;
+  /* padding: 24px;
   width: 656px;
   height: 340px;
   border-radius: 4px;
   background-color: #f7f7f7;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1); */
 }
 .rdw-editor-main blockquote {
   border-left: 5px solid #f1f1f1;
