@@ -100,13 +100,15 @@ class LayoutComponent extends Component {
       <div
         // className={classNames('rdw-link-modal', popupClassName)}
         onClick={stopPropagation}
+        className='httpsDiv'
       >
          <input type='text' placeholder='https://'
          onChange={this.updateValue}
          onBlur={this.updateValue}
          name="linkTarget"
          value={linkTarget} 
-         onDoubleClick={this.addLink} />
+         onDoubleClick={this.addLink} 
+         className='httpsMain' />
         {/* <label className="rdw-link-modal-label" htmlFor="linkTitle">
           {translations['components.controls.link.linkTitle']}
         </label>
@@ -168,8 +170,22 @@ class LayoutComponent extends Component {
     const { showModal } = this.state;
     return (
       <div className={classNames('rdw-link-wrapper', className)} aria-label="rdw-link-control">
+        {options.indexOf('unlink') >= 0 && <Option
+          // disabled={!currentState.link}
+          value="ordered-list-item"
+          active={link === 'unlink'}
+          className={classNames(unlink.className)}
+          onClick={this.removeLink}
+          title={unlink.title || translations['components.controls.link.unlink']}
+        >
+          <img
+            src={link.icon}
+            alt=""
+          />
+        </Option> }
         {options.indexOf('link') >= 0 && <Option
           value="unordered-list-item"
+          active={link === 'link'}
           className={classNames(link.className)}
           onClick={this.signalExpandShowModal}
           aria-haspopup="true"
@@ -177,25 +193,11 @@ class LayoutComponent extends Component {
           title={link.title || translations['components.controls.link.link']}
         >
           <img
-            src={link.icon}
-            alt=""
-          />
-        </Option> }
-        {options.indexOf('unlink') >= 0 && <Option
-          disabled={!currentState.link}
-          value="ordered-list-item"
-          className={classNames(unlink.className)}
-          onClick={this.removeLink}
-          title={unlink.title || translations['components.controls.link.unlink']}
-        >
-          <img
             src={unlink.icon}
             alt=""
           />
+           {expanded && showModal ? this.renderAddLinkModal() : undefined}
         </Option>}
-        <div>
-        {expanded && showModal ? this.renderAddLinkModal() : undefined}
-        </div>
       </div>
     );
   }

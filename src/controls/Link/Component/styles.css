@@ -83,3 +83,28 @@
 .rdw-history-dropdown {
   width: 50px;
 }
+
+.httpsDiv {
+  display: flex;
+  height: 20px;
+  border-radius: 4px;
+  background-color: rgb(247, 247, 247);
+  margin-left: 8px;
+}
+
+.httpsMain {
+  width: 132px;
+  height: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgb(165, 165, 165);
+  margin: auto 0;
+  margin-left: 4px;
+  border-style: none;
+}

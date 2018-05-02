@@ -8,7 +8,8 @@ import { forEach } from '../../utils/common';
 import boldOrange from './Component/typ-bold-orange.svg';
 import LayoutComponent from './Component';
 import bold from '../../../images/typ-bold.svg';
-
+import italic from '../../../images/typ-italic.svg';
+import underline from '../../../images/typ-underline.svg';
 
 export default class Inline extends Component {
   static propTypes = {
@@ -58,14 +59,49 @@ export default class Inline extends Component {
     this.signalExpanded = false;
   }
 
-  toggleInlineStyle: Function = (style: string): void => {
-    // console.log('under render method:', this.state.currentStyles.bold);
+  toggleBold: Function = (style: string): void => {
     if (this.state.currentStyles.bold)
     {
-      this.props.config[style].icon = boldOrange;
+      this.props.config[style].icon = bold;
     }
     else {
-    this.props.config[style].icon = bold;
+      this.props.config[style].icon = boldOrange;
+    }  
+  }
+
+  toggleItalic: Function = (style: string): void => {
+    if (this.state.currentStyles.italic)
+    {
+      this.props.config[style].icon = italic;
+    }
+    else {
+      this.props.config[style].icon = italic;
+    }  
+  }
+
+  toggleUnderline: Function = (style: string): void => {
+    if (this.state.currentStyles.underline)
+    {
+      this.props.config[style].icon = underline;
+    }
+    else {
+      this.props.config[style].icon = underline;
+    }  
+  }
+
+  toggleInlineStyle: Function = (style: string): void => {
+    console.log('under inline toggle:', this.state.currentStyles);
+    switch (style) {
+      case 'bold':
+        this.toggleBold(style);
+        break;
+      case 'italic':
+        this.toggleItalic(style);
+        break;
+      case 'underline':
+        this.toggleUnderline(style);
+        break;
+      default: break;
     }
     const newStyle = style === 'monospace' ? 'CODE' : style.toUpperCase();
     const { editorState, onChange } = this.props;
@@ -73,9 +109,9 @@ export default class Inline extends Component {
       editorState,
       newStyle,
     );
-   
+
     if (style === 'subscript' || style === 'superscript') {
-      //const { config } = this.props;
+      // const { config } = this.props;
       const removeStyle = style === 'subscript' ? 'SUPERSCRIPT' : 'SUBSCRIPT';
       const contentState = Modifier.removeInlineStyle(
         newState.getCurrentContent(),
@@ -117,7 +153,6 @@ export default class Inline extends Component {
     const { config, translations } = this.props;
     const { expanded, currentStyles } = this.state;
     const InlineComponent = config.component || LayoutComponent;
-    console.log('under render method:', currentStyles.bold);
     return (
       <InlineComponent
         config={config}

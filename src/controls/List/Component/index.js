@@ -21,6 +21,22 @@ export default class LayoutComponent extends Component {
     config: PropTypes.object,
     translations: PropTypes.object,
   };
+
+  state: Object = {
+    defaultFontSize: undefined,
+  };
+
+  componentDidMount(): void {
+    const editorElm = document.getElementsByClassName('DraftEditor-root');
+    if (editorElm && editorElm.length > 0) {
+      const editorStyles = window.getComputedStyle(editorElm[0]);
+      let defaultFontSize = editorStyles.getPropertyValue('font-size');
+      defaultFontSize = defaultFontSize.substring(0, defaultFontSize.length - 2);
+      this.setState({ // eslint-disable-line react/no-did-mount-set-state
+        defaultFontSize,
+      });
+    }
+  }
 //--------------
 
 // state: Object = {
@@ -89,7 +105,6 @@ export default class LayoutComponent extends Component {
   decreaseFontSize: Function = (): void => {
     const { onChange } = this.props;
     onChange('unordered');
-    console.log('in 1st');
   };  
 
   // indent: Function = (): void => {

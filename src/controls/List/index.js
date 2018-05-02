@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { RichUtils } from 'draft-js';
 import { changeDepth, getBlockBeforeSelectedBlock,
-  getSelectedBlock, isListBlock, toggleCustomInlineStyle } from 'draftjs-utils';
+  getSelectedBlock, isListBlock, toggleCustomInlineStyle,
+  getSelectionCustomInlineStyle } from 'draftjs-utils';
 
 import LayoutComponent from './Component';
 
@@ -20,6 +21,7 @@ export default class List extends Component {
   state: Object = {
     expanded: false,
     currentBlock: undefined,
+    currentFontSize: undefined,
   };
 
   componentWillMount(): void {
@@ -27,6 +29,11 @@ export default class List extends Component {
     if (editorState) {
       this.setState({ currentBlock: getSelectedBlock(editorState) });
     }
+    const { currentFontSize } = this.state;
+    this.setState({
+      currentFontSize:
+        getSelectionCustomInlineStyle(editorState, ['FONTSIZE']).FONTSIZE,
+    });
     modalHandler.registerCallBack(this.expandCollapse);
   }
 
@@ -35,6 +42,10 @@ export default class List extends Component {
       this.props.editorState !== properties.editorState) {
       const currentBlock = getSelectedBlock(properties.editorState);
       this.setState({ currentBlock: getSelectedBlock(properties.editorState) });
+      this.setState({
+        currentFontSize:
+          getSelectionCustomInlineStyle(properties.editorState, ['FONTSIZE']).FONTSIZE,
+      });
     }
   }
 
@@ -47,11 +58,11 @@ export default class List extends Component {
     this.signalExpanded = !this.state.expanded;
   };
 
-  onChange: Function = (value: string): void => {
+  onChange: Function = (value: string , fontSize: Number): void => {
     if (value === 'unordered') {
-      this.toggleBlockType1('unordered-list-item');
+      this.toggleBlockType1(fontSize);
     } else if (value === 'ordered') {
-      this.toggleBlockType2('ordered-list-item');
+      this.toggleBlockType2(fontSize);
     } else if (value === 'indent') {
       this.adjustDepth(1);
     } else {
@@ -78,10 +89,24 @@ export default class List extends Component {
     });
   };
 
-  toggleBlockType1: Function = (blockType: String): void => {
+  toggleBlockType1: Function = (): void => {
     const { editorState, onChange } = this.props;
-    const fontSize = 20;
-    console.log(editorState);
+    const { currentFontSize } = this.state;
+    this.setState({
+      currentFontSize:
+        getSelectionCustomInlineStyle(editorState, ['FONTSIZE']).FONTSIZE,
+    });
+    let fontSize = currentFontSize && Number(currentFontSize.substring(9));
+    console.log(fontSize);
+    if (fontSize === undefined || fontSize === 10 || fontSize === 20)
+    {
+       fontSize = 30;
+    }
+    else {
+     fontSize = 20;
+    }
+    this.forceUpdate();
+    console.log(fontSize);
     const newState = toggleCustomInlineStyle(
       editorState,
       'fontSize',
@@ -93,10 +118,24 @@ export default class List extends Component {
     console.log('in main index');
   };
 
-  toggleBlockType2: Function = (blockType: String): void => {
+  toggleBlockType2: Function = (): void => {
     const { editorState, onChange } = this.props;
-    const fontSize = 10;
-    console.log(editorState);
+    const { currentFontSize } = this.state;
+    this.setState({
+      currentFontSize:
+        getSelectionCustomInlineStyle(editorState, ['FONTSIZE']).FONTSIZE,
+    });
+    let fontSize = currentFontSize && Number(currentFontSize.substring(9));
+    console.log(fontSize);
+    if (fontSize === undefined || fontSize === 30 || fontSize === 20)
+    {
+       fontSize = 10;
+    }
+    else {
+     fontSize = 20;
+    }
+    this.forceUpdate();
+    console.log(fontSize);
     const newState = toggleCustomInlineStyle(
       editorState,
       'fontSize',
@@ -105,6 +144,7 @@ export default class List extends Component {
     if (newState) {
       onChange(newState);
     }
+    
     console.log('in main index');
   };
 
@@ -141,21 +181,23 @@ export default class List extends Component {
 
   render(): Object {
     const { config, translations } = this.props;
-    const { expanded, currentBlock } = this.state;
+    const { expanded, currentBlock, currentFontSize } = this.state;
     const ListComponent = config.component || LayoutComponent;
     let listType;
-    if (currentBlock.get('type') === 'unordered-list-item') {
-      listType = 'unordered';
-    } else if (currentBlock.get('type') === 'ordered-list-item') {
-      listType = 'ordered';
-    }
+    // if (currentBlock.get('type') === 'unordered-list-item') {
+    //   listType = fontSize;
+    // } else if (currentBlock.get('type') === 'ordered-list-item') {
+    //   listType = 'ordered';
+    // }
     const indentDisabled = this.isIndentDisabled();
     const outdentDisabled = this.isOutdentDisabled();
+    const fontSize = currentFontSize && Number(currentFontSize.substring(9));
+    // console.log(fontSize);
     return (
       <ListComponent
         config={config}
         translations={translations}
-        currentState={{ listType }}
+        currentState={{ fontSize }}
         expanded={expanded}
         onExpandEvent={this.onExpandEvent}
         doExpand={this.doExpand}
