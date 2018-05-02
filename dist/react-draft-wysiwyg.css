@@ -1,15 +1,15 @@
 .rdw-option-wrapper {
-  border: 1px solid #F1F1F1;
-  padding: 5px;
+  /* border: 1px solid #F1F1F1; */
+  padding: 8px;
   min-width: 25px;
   height: 20px;
-  border-radius: 2px;
+  border-radius: 4px;
   margin: 0 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background: white;
+  background: #f7f7f7;
   text-transform: capitalize;
 }
 .rdw-option-wrapper:hover {
@@ -20,6 +20,7 @@
 }
 .rdw-option-active {
   box-shadow: 1px 1px 0px #BFBDBD inset;
+  background: #e5e5e5;
 }
 .rdw-option-disabled {
   opacity: 0.3;
@@ -302,7 +303,7 @@
   padding: 15px;
   border-radius: 2px;
   z-index: 100;
-  background: white;
+  background: red;
   box-shadow: 3px 3px 5px #BFBDBD;
 }
 .rdw-link-modal-label {
@@ -805,19 +806,30 @@
 }
 .rdw-editor-main {
   height: 100%;
-  overflow: auto;
   box-sizing: border-box;
 }
+
+.rdw-editor-main-content {
+  height: 100px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: justify;
+  text-justify: inter-word;
+  color: rgb(255, 107, 53);
+  overflow: auto;
+}
+
 .rdw-editor-toolbar {
-  padding: 6px 5px 0;
-  border-radius: 2px;
-  border: 1px solid #F1F1F1;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
   display: flex;
   justify-content: flex-start;
-  background: white;
+  background-color: #ffffff;
   flex-wrap: wrap;
   font-size: 15px;
-  margin-bottom: 5px;
   user-select: none;
 }
 .public-DraftStyleDefault-block {
@@ -837,6 +849,35 @@
   background: #f1f1f1;
   border-radius: 3px;
   padding: 1px 10px;
+}
+
+.textStyleDiv {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgb(50, 50, 50);
+  margin-bottom: 4px;
+}
+
+.textDiv {
+  display: flex;
+  height: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgb(50, 50, 50);
+  margin-top: 24px;
+  margin-bottom: 4px;
 }/**
  * Draft v0.9.1
  *
