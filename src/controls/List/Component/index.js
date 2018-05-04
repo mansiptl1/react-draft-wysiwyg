@@ -45,7 +45,7 @@ export default class LayoutComponent extends Component {
     const { onChange } = this.props;
     onChange('ordered');
   };
-  
+
   decreaseFontSize: Function = (): void => {
     const { onChange } = this.props;
     onChange('unordered');
@@ -70,11 +70,12 @@ export default class LayoutComponent extends Component {
           className={classNames(unordered.className)}
           active={listType === 'unordered'}
           title={unordered.title || translations['components.controls.list.unordered']}
+          src={unordered.icon}
         >
-          <img
+          {/* <img
             src={unordered.icon}
             alt=""
-          />
+          /> */}
         </Option>}
         {options.indexOf('ordered') >= 0 && <Option
           value="ordered"
@@ -82,11 +83,12 @@ export default class LayoutComponent extends Component {
           className={classNames(ordered.className)}
           active={listType === 'ordered'}
           title={ordered.title || translations['components.controls.list.ordered']}
+          src={ordered.icon}
         >
-          <img
+          {/* <img
             src={ordered.icon}
             alt=""
-          />
+          /> */}
         </Option>}
       </div>
     );
