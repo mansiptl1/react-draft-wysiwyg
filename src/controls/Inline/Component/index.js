@@ -32,6 +32,8 @@ export default class Inline extends Component {
                 key={index}
                 value={style}
                 onClick={onChange}
+                configValue={config}
+                styleValue={style}
                 className={classNames(config[style].className)}
                 active={
                   currentState[style] === true ||

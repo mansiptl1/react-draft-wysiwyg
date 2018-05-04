@@ -60,9 +60,9 @@ export default class List extends Component {
 
   onChange: Function = (value: string , fontSize: Number): void => {
     if (value === 'unordered') {
-      this.toggleBlockType1(fontSize);
+      this.toggleBlockType1(value);
     } else if (value === 'ordered') {
-      this.toggleBlockType2(fontSize);
+      this.toggleBlockType2(value);
     } else if (value === 'indent') {
       this.adjustDepth(1);
     } else {
@@ -100,10 +100,10 @@ export default class List extends Component {
     console.log(fontSize);
     if (fontSize === undefined || fontSize === 10 || fontSize === 20)
     {
-       fontSize = 30;
+      fontSize = 30;
     }
     else {
-     fontSize = 20;
+      fontSize = 20;
     }
     this.forceUpdate();
     console.log(fontSize);
@@ -129,10 +129,10 @@ export default class List extends Component {
     console.log(fontSize);
     if (fontSize === undefined || fontSize === 30 || fontSize === 20)
     {
-       fontSize = 10;
+      fontSize = 10;
     }
     else {
-     fontSize = 20;
+      fontSize = 20;
     }
     this.forceUpdate();
     console.log(fontSize);
@@ -184,20 +184,18 @@ export default class List extends Component {
     const { expanded, currentBlock, currentFontSize } = this.state;
     const ListComponent = config.component || LayoutComponent;
     let listType;
-    // if (currentBlock.get('type') === 'unordered-list-item') {
-    //   listType = fontSize;
-    // } else if (currentBlock.get('type') === 'ordered-list-item') {
-    //   listType = 'ordered';
-    // }
+    if (currentBlock.get('type') === 'unordered-list-item') {
+      listType = 'unordered';
+    } else if (currentBlock.get('type') === 'ordered-list-item') {
+      listType = 'ordered';
+    }
     const indentDisabled = this.isIndentDisabled();
     const outdentDisabled = this.isOutdentDisabled();
-    const fontSize = currentFontSize && Number(currentFontSize.substring(9));
-    // console.log(fontSize);
     return (
       <ListComponent
         config={config}
         translations={translations}
-        currentState={{ fontSize }}
+        currentState={{ listType }}
         expanded={expanded}
         onExpandEvent={this.onExpandEvent}
         doExpand={this.doExpand}

@@ -98,17 +98,16 @@ class LayoutComponent extends Component {
     const { linkTitle, linkTarget, linkTargetOption } = this.state;
     return (
       <div
-        // className={classNames('rdw-link-modal', popupClassName)}
         onClick={stopPropagation}
         className='httpsDiv'
       >
-         <input type='text' placeholder='https://'
-         onChange={this.updateValue}
-         onBlur={this.updateValue}
-         name="linkTarget"
-         value={linkTarget} 
-         onDoubleClick={this.addLink} 
-         className='httpsMain' />
+        <input type='text' placeholder='https://'
+          onChange={this.updateValue}
+          onBlur={this.updateValue}
+          name="linkTarget"
+          value={linkTarget}
+          onDoubleClick={this.addLink}
+          className='httpsMain' />
         {/* <label className="rdw-link-modal-label" htmlFor="linkTitle">
           {translations['components.controls.link.linkTitle']}
         </label>
@@ -182,7 +181,7 @@ class LayoutComponent extends Component {
             src={link.icon}
             alt=""
           />
-        </Option> }
+        </Option>}
         {options.indexOf('link') >= 0 && <Option
           value="unordered-list-item"
           active={link === 'link'}

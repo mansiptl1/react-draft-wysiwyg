@@ -45,6 +45,7 @@ export default class Inline extends Component {
 
   componentWillUnmount(): void {
     const { modalHandler } = this.props;
+   
     modalHandler.deregisterCallBack(this.expandCollapse);
   }
 
@@ -59,50 +60,7 @@ export default class Inline extends Component {
     this.signalExpanded = false;
   }
 
-  toggleBold: Function = (style: string): void => {
-    if (this.state.currentStyles.bold)
-    {
-      this.props.config[style].icon = bold;
-    }
-    else {
-      this.props.config[style].icon = boldOrange;
-    }  
-  }
-
-  toggleItalic: Function = (style: string): void => {
-    if (this.state.currentStyles.italic)
-    {
-      this.props.config[style].icon = italic;
-    }
-    else {
-      this.props.config[style].icon = italic;
-    }  
-  }
-
-  toggleUnderline: Function = (style: string): void => {
-    if (this.state.currentStyles.underline)
-    {
-      this.props.config[style].icon = underline;
-    }
-    else {
-      this.props.config[style].icon = underline;
-    }  
-  }
-
   toggleInlineStyle: Function = (style: string): void => {
-    console.log('under inline toggle:', this.state.currentStyles);
-    switch (style) {
-      case 'bold':
-        this.toggleBold(style);
-        break;
-      case 'italic':
-        this.toggleItalic(style);
-        break;
-      case 'underline':
-        this.toggleUnderline(style);
-        break;
-      default: break;
-    }
     const newStyle = style === 'monospace' ? 'CODE' : style.toUpperCase();
     const { editorState, onChange } = this.props;
     let newState = RichUtils.toggleInlineStyle(
@@ -111,7 +69,6 @@ export default class Inline extends Component {
     );
 
     if (style === 'subscript' || style === 'superscript') {
-      // const { config } = this.props;
       const removeStyle = style === 'subscript' ? 'SUPERSCRIPT' : 'SUBSCRIPT';
       const contentState = Modifier.removeInlineStyle(
         newState.getCurrentContent(),
@@ -123,7 +80,6 @@ export default class Inline extends Component {
     if (newState) {
       onChange(newState);
     }
-    console.log('{config[style].icon}', this.props.config[style].icon);
   };
 
   changeKeys = (style) => {

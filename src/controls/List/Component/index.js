@@ -19,6 +19,7 @@ export default class LayoutComponent extends Component {
     editorState: PropTypes.object,
     modalHandler: PropTypes.object,
     config: PropTypes.object,
+    currentState: PropTypes.object,
     translations: PropTypes.object,
   };
 
@@ -37,85 +38,18 @@ export default class LayoutComponent extends Component {
       });
     }
   }
-//--------------
 
-// state: Object = {
-//   expanded: undefined,
-//   currentFontSize: undefined,
-// };
-
-// componentWillMount(): void {
-//   const { editorState, modalHandler } = this.props;
-//   if (editorState) {
-//     this.setState({
-//       currentFontSize:
-//         getSelectionCustomInlineStyle(editorState,
-//           ['FONTSIZE']).FONTSIZE,
-//     });
-//   }
-//   // modalHandler.registerCallBack(this.expandCollapse);
-// }
-
-// componentWillReceiveProps(properties: Object): void {
-//   if (properties.editorState &&
-//     this.props.editorState !== properties.editorState) {
-//     this.setState({
-//       currentFontSize:
-//         getSelectionCustomInlineStyle(properties.editorState,
-//           ['FONTSIZE']).FONTSIZE,
-//     });
-//   }
-// }
-
-// componentWillUnmount(): void {
-//   const { modalHandler } = this.props;
-//   // modalHandler.deregisterCallBack(this.expandCollapse);
-// }
-
-// onExpandEvent: Function = (): void => {
-//   this.signalExpanded = !this.state.expanded;
-// };
-
-// expandCollapse: Function = (): void => {
-//   this.setState({
-//     expanded: this.signalExpanded,
-//   });
-//   this.signalExpanded = false;
-// }
-
-// doExpand: Function = (): void => {
-//   this.setState({
-//     expanded: true,
-//   });
-// };
-
-// doCollapse: Function = (): void => {
-//   this.setState({
-//     expanded: false,
-//   });
-// };
-//------------
   options: Array = ['unordered', 'ordered', 'indent', 'outdent'];
 
   increaseFontSize: Function = (): void => {
     const { onChange } = this.props;
     onChange('ordered');
   };
-
+  
   decreaseFontSize: Function = (): void => {
     const { onChange } = this.props;
     onChange('unordered');
-  };  
-
-  // indent: Function = (): void => {
-  //   const { onChange } = this.props;
-  //   onChange('indent');
-  // };
-
-  // outdent: Function = (): void => {
-  //   const { onChange } = this.props;
-  //   onChange('outdent');
-  // };
+  };
 
   // todo: evaluate refactoring this code to put a loop there and in other places also in code
   // hint: it will require moving click handlers
@@ -125,9 +59,9 @@ export default class LayoutComponent extends Component {
       currentState: { listType },
       translations,
       indentDisabled,
-      outdentDisabled
+      outdentDisabled,
     } = this.props;
-    const { options, unordered, ordered, indent, outdent, className } = config;
+    const { options, unordered, ordered, className } = config;
     return (
       <div className={classNames('rdw-list-wrapper', className)} aria-label="rdw-list-control">
         {options.indexOf('unordered') >= 0 && <Option
@@ -151,28 +85,6 @@ export default class LayoutComponent extends Component {
         >
           <img
             src={ordered.icon}
-            alt=""
-          />
-        </Option>}
-        {options.indexOf('indent') >= 0 && <Option
-          onClick={this.indent}
-          disabled={indentDisabled}
-          className={classNames(indent.className)}
-          title={indent.title || translations['components.controls.list.indent']}
-        >
-          <img
-            src={indent.icon}
-            alt=""
-          />
-        </Option>}
-        {options.indexOf('outdent') >= 0 && <Option
-          onClick={this.outdent}
-          disabled={outdentDisabled}
-          className={classNames(outdent.className)}
-          title={outdent.title || translations['components.controls.list.outdent']}
-        >
-          <img
-            src={outdent.icon}
             alt=""
           />
         </Option>}

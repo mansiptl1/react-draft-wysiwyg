@@ -453,7 +453,7 @@ export default class WysiwygEditor extends Component {
       event.preventDefault();
     }
   };
-
+  
   render() {
     const { editorState, editorFocused, toolbar } = this.state;
     const {
