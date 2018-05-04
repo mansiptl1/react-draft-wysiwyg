@@ -20,7 +20,7 @@ export default class Option extends Component {
   };
 
   state = {
-    src: '',
+    src: this.props.src,
   };
 
   componentWillReceiveProps(nextProps) {
