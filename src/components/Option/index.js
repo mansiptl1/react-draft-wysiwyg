@@ -84,7 +84,6 @@ export default class Option extends Component {
         title={title}
       >
         <img
-
           alt=""
           src={this.state.src}
         />
