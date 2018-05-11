@@ -176,11 +176,12 @@ class LayoutComponent extends Component {
           className={classNames(unlink.className)}
           onClick={this.removeLink}
           title={unlink.title || translations['components.controls.link.unlink']}
+          src={link.icon}
         >
-          <img
+          {/* <img
             src={link.icon}
             alt=""
-          />
+          /> */}
         </Option>}
         {options.indexOf('link') >= 0 && <Option
           value="unordered-list-item"
@@ -190,11 +191,12 @@ class LayoutComponent extends Component {
           aria-haspopup="true"
           aria-expanded={showModal}
           title={link.title || translations['components.controls.link.link']}
+          src={unlink.icon}
         >
-          <img
+          {/* <img
             src={unlink.icon}
             alt=""
-          />
+          /> */}
            {expanded && showModal ? this.renderAddLinkModal() : undefined}
         </Option>}
       </div>

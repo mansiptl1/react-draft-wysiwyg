@@ -40,15 +40,16 @@ export default class Inline extends Component {
                   (style === 'MONOSPACE' && currentState.CODE)
                 }
                 title={config[style].title || translations[`components.controls.inline.${style}`]}
+                src={config[style].icon}
               >
-                <img
+                {/* <img
                   alt=""
                   src={config[style].icon}
-                />
+                /> */}
               </Option>),
             )
         }
-        
+
       </div>
     );
   }
