@@ -184,9 +184,9 @@ export default class List extends Component {
     const { expanded, currentBlock, currentFontSize } = this.state;
     const ListComponent = config.component || LayoutComponent;
     let listType;
-    if (currentBlock.get('type') === 'unordered-list-item') {
+    if ((currentFontSize && Number(currentFontSize.substring(9))) === 30) {
       listType = 'unordered';
-    } else if (currentBlock.get('type') === 'ordered-list-item') {
+    } else if ((currentFontSize && Number(currentFontSize.substring(9))) === 10) {
       listType = 'ordered';
     }
     const indentDisabled = this.isIndentDisabled();

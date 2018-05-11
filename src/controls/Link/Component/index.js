@@ -172,7 +172,7 @@ class LayoutComponent extends Component {
         {options.indexOf('unlink') >= 0 && <Option
           // disabled={!currentState.link}
           value="ordered-list-item"
-          active={link === 'unlink'}
+          active={false}
           className={classNames(unlink.className)}
           onClick={this.removeLink}
           title={unlink.title || translations['components.controls.link.unlink']}
@@ -185,7 +185,7 @@ class LayoutComponent extends Component {
         </Option>}
         {options.indexOf('link') >= 0 && <Option
           value="unordered-list-item"
-          active={link === 'link'}
+          active={showModal}
           className={classNames(link.className)}
           onClick={this.signalExpandShowModal}
           aria-haspopup="true"
