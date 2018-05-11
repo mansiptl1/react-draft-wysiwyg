@@ -25,14 +25,6 @@ export default class Option extends Component {
     }
   };
 
-  // onToggle: Function = () => {
-  //   const { disabled, value} = this.props;
-  //   switch(value) {
-  //     case: 'bold'
-       
-  //   }
-  // }
-
   render() {
     const { children, className, activeClassName, active, disabled, title } = this.props;
     return (
@@ -49,7 +41,7 @@ export default class Option extends Component {
         aria-selected={active}
         title={title}
       >
-        {children}    
+        {children}
      </div>
     );
   }
