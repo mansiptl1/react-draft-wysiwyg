@@ -8,7 +8,7 @@
   border: solid 1px rgb(229, 229, 229);
   padding: 12px;
   border-radius: 4px;
-  height: 160px;
+  height: auto;
   background-color: rgb(255, 255, 255);
 }
 .rdw-storybook-toolbar {

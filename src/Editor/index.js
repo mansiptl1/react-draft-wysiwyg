@@ -533,6 +533,7 @@ export default class WysiwygEditor extends Component {
         >
         <div className='rdw-editor-main-content'>
           <Editor
+            placeholder='Enter your content text'
             ref={this.setEditorReference}
             onTab={this.onTab}
             onUpArrow={this.onUpDownArrow}
