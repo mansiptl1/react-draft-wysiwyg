@@ -827,7 +827,7 @@
   right: 0;
 }
 .rdw-editor-main {
-  height: auto;
+  min-height: 160px;
   border-radius: 4px;
   background-color: #ffffff;
   border: solid 1px #e5e5e5;
@@ -835,7 +835,7 @@
 }
 
 .rdw-editor-main-content {
-  min-height: 100px;
+  /* min-height: 100px; */
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-style: normal;
