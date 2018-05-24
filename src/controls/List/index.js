@@ -98,12 +98,12 @@ export default class List extends Component {
     });
     let fontSize = currentFontSize && Number(currentFontSize.substring(9));
     console.log(fontSize);
-    if (fontSize === undefined || fontSize === 10 || fontSize === 20)
+    if (fontSize === undefined || fontSize === 10 || fontSize === 14)
     {
-      fontSize = 30;
+      fontSize = 18;
     }
     else {
-      fontSize = 20;
+      fontSize = 14;
     }
     this.forceUpdate();
     console.log(fontSize);
@@ -127,12 +127,12 @@ export default class List extends Component {
     });
     let fontSize = currentFontSize && Number(currentFontSize.substring(9));
     console.log(fontSize);
-    if (fontSize === undefined || fontSize === 30 || fontSize === 20)
+    if (fontSize === undefined || fontSize === 18 || fontSize === 14)
     {
       fontSize = 10;
     }
     else {
-      fontSize = 20;
+      fontSize = 14;
     }
     this.forceUpdate();
     console.log(fontSize);
@@ -184,11 +184,11 @@ export default class List extends Component {
     const { expanded, currentBlock, currentFontSize } = this.state;
     const ListComponent = config.component || LayoutComponent;
     let listType;
-    if ((currentFontSize && Number(currentFontSize.substring(9))) === 30) {
+    if ((currentFontSize && Number(currentFontSize.substring(9))) === 18) {
       listType = 'unordered';
     } else if ((currentFontSize && Number(currentFontSize.substring(9))) === 10) {
       listType = 'ordered';
-    } else if ((currentFontSize && Number(currentFontSize.substring(9))) === 20) {
+    } else if ((currentFontSize && Number(currentFontSize.substring(9))) === 14) {
       listType = 'undefined';
     }
     const indentDisabled = this.isIndentDisabled();

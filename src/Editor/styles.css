@@ -9,7 +9,8 @@
 .rdw-editor-main-content {
   /* min-height: 100px; */
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-size: 14px;
+  line-height: 1.43;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
