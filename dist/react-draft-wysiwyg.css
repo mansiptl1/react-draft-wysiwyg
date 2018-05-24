@@ -12,14 +12,14 @@
   text-transform: capitalize;
 }
 .rdw-option-wrapper:hover {
-  box-shadow: 1px 1px 0px #BFBDBD;
+  /* box-shadow: 1px 1px 0px #BFBDBD; */
 }
 .rdw-option-wrapper:active {
-  box-shadow: 1px 1px 0px #BFBDBD inset;
+  /* box-shadow: 1px 1px 0px #BFBDBD inset; */
   background: #e5e5e5;
 }
 .rdw-option-active {
-  box-shadow: 1px 1px 0px #BFBDBD inset;
+  /* box-shadow: 1px 1px 0px #BFBDBD inset; */
   background: #e5e5e5;
 }
 .rdw-option-disabled {
@@ -831,7 +831,7 @@
   border-radius: 4px;
   background-color: #ffffff;
   border: solid 1px #e5e5e5;
-  padding: 12px;
+  padding: 8px 12px;
 }
 
 .rdw-editor-main-content {
@@ -859,7 +859,7 @@
   user-select: none;
 }
 .public-DraftStyleDefault-block {
-  margin: 1em 0;
+  /* margin: 1em 0; */
 }
 .rdw-editor-wrapper:focus {
   outline: none;

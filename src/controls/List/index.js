@@ -144,7 +144,7 @@ export default class List extends Component {
     if (newState) {
       onChange(newState);
     }
-    
+
     console.log('in main index');
   };
 
@@ -188,6 +188,8 @@ export default class List extends Component {
       listType = 'unordered';
     } else if ((currentFontSize && Number(currentFontSize.substring(9))) === 10) {
       listType = 'ordered';
+    } else if ((currentFontSize && Number(currentFontSize.substring(9))) === 20) {
+      listType = 'undefined';
     }
     const indentDisabled = this.isIndentDisabled();
     const outdentDisabled = this.isOutdentDisabled();

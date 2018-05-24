@@ -12,14 +12,14 @@
   text-transform: capitalize;
 }
 .rdw-option-wrapper:hover {
-  box-shadow: 1px 1px 0px #BFBDBD;
+  /* box-shadow: 1px 1px 0px #BFBDBD; */
 }
 .rdw-option-wrapper:active {
-  box-shadow: 1px 1px 0px #BFBDBD inset;
+  /* box-shadow: 1px 1px 0px #BFBDBD inset; */
   background: #e5e5e5;
 }
 .rdw-option-active {
-  box-shadow: 1px 1px 0px #BFBDBD inset;
+  /* box-shadow: 1px 1px 0px #BFBDBD inset; */
   background: #e5e5e5;
 }
 .rdw-option-disabled {

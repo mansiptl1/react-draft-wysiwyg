@@ -3,7 +3,7 @@
   border-radius: 4px;
   background-color: #ffffff;
   border: solid 1px #e5e5e5;
-  padding: 12px;
+  padding: 8px 12px;
 }
 
 .rdw-editor-main-content {
@@ -31,7 +31,7 @@
   user-select: none;
 }
 .public-DraftStyleDefault-block {
-  margin: 1em 0;
+  /* margin: 1em 0; */
 }
 .rdw-editor-wrapper:focus {
   outline: none;
